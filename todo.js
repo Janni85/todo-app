@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     aufgabenLaden(); // Ruft die Funktion auf, um gespeicherte Aufgaben zu laden
 });
 
-
 function aufgabenLaden() {
     let aufgaben = JSON.parse(localStorage.getItem('aufgaben')) || [];
 
@@ -11,7 +10,18 @@ function aufgabenLaden() {
 
     aufgaben.forEach((aufgabe, index) => {
         let li = document.createElement('li'); // Erstellt ein neues Listenelement
-        li.textContent = aufgabe.text; // Setzt den Text der Aufgabe in das Listenelement
+
+        // Erstellt ein neues Span-Element für den Kommentar
+        let commentSpan = document.createElement('span');
+        commentSpan.textContent = aufgabe.text; // Setzt den Text der Aufgabe in das Span-Element
+        li.appendChild(commentSpan); // Fügt das Span-Element zum Listenelement hinzu
+
+        // Erstellt ein neues Span-Element für das Datum und die Uhrzeit
+        let timestampSpan = document.createElement('span');
+        timestampSpan.textContent = aufgabe.timestamp; // Setzt das Datum und die Uhrzeit in das Span-Element
+        timestampSpan.style.float = 'right'; // Fügt einen CSS-Stil hinzu, um das Span-Element rechtsbündig zu positionieren
+        li.appendChild(timestampSpan); // Fügt das Span-Element zum Listenelement hinzu
+
         aufgabenListe.appendChild(li); // Fügt das Listenelement zur Liste im HTML hinzu
 
         // Erstellt einen Löschbutton für jede Aufgabe
@@ -39,10 +49,11 @@ function neueAufgabeHinzufuegen() {
         alert('Bitte eine Aufgabe eingeben!'); // Zeigt eine Warnung, falls das Feld leer ist
         return; // Beendet die Funktion frühzeitig, falls kein Text eingegeben wurde
     }
+
     let aufgaben = JSON.parse(localStorage.getItem('aufgaben')) || []; // Liest vorhandene Aufgaben
-    aufgaben.push({text: aufgabeText}); // Fügt die neue Aufgabe zum Array hinzu
+    let timestamp = new Date(); // Erstellt ein neues Date-Objekt mit dem aktuellen Datum und der Uhrzeit
+    aufgaben.push({ text: aufgabeText, timestamp: timestamp.toLocaleString() }); // Fügt die neue Aufgabe mit dem Zeitstempel zum Array hinzu
     localStorage.setItem('aufgaben', JSON.stringify(aufgaben)); // Speichert das aktualisierte Array
     aufgabeInput.value = ''; // Leert das Eingabefeld
     aufgabenLaden();
 }
-
