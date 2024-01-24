@@ -5,19 +5,24 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg: #002d4f;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #002d4f;
-    margin: 0;
     padding: 20px;
     text-align: center;
     color: white;
+    height: 100vh;
+    margin: 0;
+    background: var(--bg);
+    place-items: center;
 }
 
 h1 {
     color: white;
     font-size: 2em;
-    text-align: center;
     padding-top: 100px;
 }
 
@@ -40,12 +45,11 @@ button {
 button:hover {
     background-color: #009be8;
     color: #fff;
-    scale: 110%;
+    transform: scale(1.1);
 }
 
 li {
     background-color: #333333;
-    padding: 0px;
     padding-left: 20px;
     margin: 10px 0;
     border-radius: 20px;
@@ -65,4 +69,49 @@ input {
     box-sizing: border-box;
     border: none;
     border-radius: 20px;
+}
+
+.timestamp {
+    margin-left: auto;
+    padding-right: 20px;
+}
+
+span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: var(--c1);
+    border-radius: 50%;
+    animation:
+      anim 2s var(--d) ease-out infinite;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+}
+
+@keyframes anim {
+    0% {
+        box-shadow:
+          0 0 8px 6px #1affb300,
+          0 0 0px 0px var(--bg),
+          0 0 0px 0px #1affb300;
+    }
+
+    10% {
+        box-shadow:
+          0 0 8px 6px var(--c2),
+          0 0 12px 10px var(--bg),
+          0 0 12px 14px var(--c2);
+    }
+
+    100% {
+        box-shadow:
+          0 0 8px 6px #1affb300,
+          0 0 0px 40px var(--bg),
+          0 0 0px 40px #1affb300
+    }
 }

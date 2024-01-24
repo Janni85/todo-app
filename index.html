@@ -4,16 +4,28 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="styles.css">
         <title>
-            Meine To-Do-Liste
+            Jannis To-Do-Liste
         </title>
     </head>
     <body>
-        <h1>Meine To-Do-Liste</h1>
+        <h1>Jannis To-Do-Liste</h1>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="container">
+            <span style="--c1: #33ffbb; --c2: #1affb3; --d: 0s;"></span>
+            <span style="--c1: #65dac6; --c2: #1affd9; --d: .25s;"></span>
+            <span style="--c1: #33ffff; --c2: #1affff; --d: .5s;"></span>
+            <span style="--c1: #33ddff; --c2: #1ad9ff; --d: .75s;"></span>
+            <span style="--c1: #33bbff; --c2: #1ab3ff; --d: 1s;"></span>
+            <span style="--c1: #3399ff; --c2: #1a8cff; --d: 1.25s;"></span>
+        </div>
+        <br>
         <br>
         <input type="text" id="neueAufgabe" placeholder="Neue Notiz hinzufügen">
         <button onclick="neueAufgabeHinzufuegen()">Hinzufügen</button>
-        <ul id="todoListe">
-        </ul>
+        <ul id="todoListe"></ul>
     <script src="todo.js"></script>
     </body>
 </html>

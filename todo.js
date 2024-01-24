@@ -12,12 +12,13 @@ function aufgabenLaden() {
         let li = document.createElement('li'); // Erstellt ein neues Listenelement
 
         // Erstellt ein neues Span-Element für den Kommentar
-        let commentSpan = document.createElement('span');
+        let commentSpan = document.createElement('span1');
         commentSpan.textContent = aufgabe.text; // Setzt den Text der Aufgabe in das Span-Element
         li.appendChild(commentSpan); // Fügt das Span-Element zum Listenelement hinzu
 
         // Erstellt ein neues Span-Element für das Datum und die Uhrzeit
-        let timestampSpan = document.createElement('span');
+        let timestampSpan = document.createElement('span1');
+        timestampSpan.className = 'timestamp';
         timestampSpan.textContent = aufgabe.timestamp; // Setzt das Datum und die Uhrzeit in das Span-Element
         timestampSpan.style.float = 'right'; // Fügt einen CSS-Stil hinzu, um das Span-Element rechtsbündig zu positionieren
         li.appendChild(timestampSpan); // Fügt das Span-Element zum Listenelement hinzu
@@ -46,7 +47,7 @@ function neueAufgabeHinzufuegen() {
     let aufgabeInput = document.getElementById('neueAufgabe'); // Greift auf das Eingabefeld zu
     let aufgabeText = aufgabeInput.value; // Holt den eingegebenen Text aus dem Eingabefeld
     if (aufgabeText === '') {
-        alert('Bitte eine Aufgabe eingeben!'); // Zeigt eine Warnung, falls das Feld leer ist
+        alert('Bitte eine Notiz eingeben!'); // Zeigt eine Warnung, falls das Feld leer ist
         return; // Beendet die Funktion frühzeitig, falls kein Text eingegeben wurde
     }
 
