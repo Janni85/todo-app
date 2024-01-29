@@ -72,10 +72,10 @@ input {
 }
 
 .timestamp {
-    margin-left: auto;
+    margin-left: 40px;
     padding-right: 40px;
     padding-left: 40px;
-    align-items: right;
+    align-items: center;
 }
 
 .timestamp, button {
@@ -83,12 +83,12 @@ input {
 }
 
 .aufgabe {
-    flex-grow: 1;
     padding-right: 20px;
     padding-left: 20px;
     text-align: left;
     word-wrap: break-word;
     margin-right: 40px;
+    flex-grow: 1;
 }
 
 span {
