@@ -13,6 +13,7 @@ function aufgabenLaden() {
 
         // Erstellt ein neues Span-Element für den Kommentar
         let commentSpan = document.createElement('span1');
+        commentSpan.className = 'comment';
         commentSpan.textContent = aufgabe.text; // Setzt den Text der Aufgabe in das Span-Element
         li.appendChild(commentSpan); // Fügt das Span-Element zum Listenelement hinzu
 
