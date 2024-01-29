@@ -11,18 +11,17 @@ function aufgabenLaden() {
     aufgaben.forEach((aufgabe, index) => {
         let li = document.createElement('li'); // Erstellt ein neues Listenelement
 
-        // Erstellt ein neues Span-Element für den Kommentar
-        let commentSpan = document.createElement('span1');
-        commentSpan.className = 'comment';
-        commentSpan.textContent = aufgabe.text; // Setzt den Text der Aufgabe in das Span-Element
-        li.appendChild(commentSpan); // Fügt das Span-Element zum Listenelement hinzu
+        // Erstellt ein neues Div-Element für den Kommentar
+        let aufgabeDiv = document.createElement('div');
+        aufgabeDiv.className = 'aufgabe';
+        aufgabeDiv.textContent = aufgabe.text; // Setzt den Text der Aufgabe in das Div-Element
+        li.appendChild(aufgabeDiv); // Fügt das Div-Element zum Listenelement hinzu
 
-        // Erstellt ein neues Span-Element für das Datum und die Uhrzeit
-        let timestampSpan = document.createElement('span1');
-        timestampSpan.className = 'timestamp';
-        timestampSpan.textContent = aufgabe.timestamp; // Setzt das Datum und die Uhrzeit in das Span-Element
-        timestampSpan.style.float = 'right'; // Fügt einen CSS-Stil hinzu, um das Span-Element rechtsbündig zu positionieren
-        li.appendChild(timestampSpan); // Fügt das Span-Element zum Listenelement hinzu
+        // Erstellt ein neues Div-Element für das Datum und die Uhrzeit
+        let timestampDiv = document.createElement('div');
+        timestampDiv.className = 'timestamp';
+        timestampDiv.textContent = aufgabe.timestamp; // Setzt das Datum und die Uhrzeit in das Div-Element
+        li.appendChild(timestampDiv); // Fügt das Div-Element zum Listenelement hinzu
 
         aufgabenListe.appendChild(li); // Fügt das Listenelement zur Liste im HTML hinzu
 
@@ -34,6 +33,8 @@ function aufgabenLaden() {
             aufgabeLoeschen(index);
         };
         li.appendChild(loeschButton); // Fügt den Löschbutton zum Listenelement hinzu
+
+        aufgabenListe.appendChild(li);
     });
 }
 
