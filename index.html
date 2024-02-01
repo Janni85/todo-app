@@ -25,6 +25,9 @@
         <br>
         <input type="text" id="neueAufgabe" placeholder="Neue Notiz hinzufügen">
         <button onclick="neueAufgabeHinzufuegen()">Hinzufügen</button>
+        <div id="result-container">
+            <!-- Hier werden die Daten angezeigt -->
+        </div>
         <ol id="todoListe"></ol>
         <br>
         <button id="showDogButton">Zeige Hundebild</button>
@@ -33,5 +36,7 @@
         <img id="dogImage" style="display: none;" src="" alt="Hundebild">
     <script src="todo.js"></script>
     <script src="dogs.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="todoapi.js"></script>
     </body>
 </html>

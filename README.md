@@ -8,3 +8,6 @@
 # Span-Elemente der JS angepasst, weil sie sich mit den Span-Elementen der HTML überschnitten haben
 # CSS JS und HTML wurden angepasst
 # dogs.js Datei hinzugefügt für neuen Button der beim klicken auf eine API zugreift, die verschiedene Hundebilder anzeigt
+# todoapi.js Datei hinzugefügt mit Script zum auslesen der Tasks-API (AJAX-Aufruf)
+# Tasks-API eingebunden die über das API Gateway und Lambda die UserID Tasks ausliest und auf der HTML ausgibt
+# CSS angepasst für die API ausgabe
