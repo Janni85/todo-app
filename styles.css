@@ -30,18 +30,6 @@ h1:hover {
     color: #009be8;
 }
 
-button {
-    background-color: #0074cc;
-    color: white;
-    padding: 10px 20px;
-    margin: 2px 0;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 1em;
-    align-content: center;
-}
-
 button:hover {
     background-color: #009be8;
     color: #fff;
@@ -55,7 +43,19 @@ li {
     border-radius: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+button {
+    background-color: #0074cc;
+    color: white;
+    padding: 10px 20px;
+    margin: 2px 0;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1em;
+    align-content: center;
 }
 
 li:hover {

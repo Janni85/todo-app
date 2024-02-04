@@ -24,7 +24,7 @@ async function aufgabenLaden() {
         if (data.Tasks && data.Tasks.length > 0) {
             data.Tasks.forEach(task => {
                 const li = document.createElement('li');
-                li.textContent = `Task: ${task.Task}, TodoID: ${task.TodoID}`; // Zeige Task und TodoID an
+                li.textContent = `TodoID: ${task.TodoID}, Task: ${task.Task}`; // Zeige TodoID und Task an
 
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Löschen';
@@ -93,14 +93,14 @@ async function aufgabeHinzufuegen() {
         };
 
         const response = await fetch('https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/put_item', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(requestBody)
         });
 
-        // console.log(response)
+        console.log(response)
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);//Response.
         }
