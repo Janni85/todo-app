@@ -11,3 +11,5 @@
 # todoapi.js Datei hinzugefügt mit Script zum auslesen der Tasks-API (AJAX-Aufruf)
 # Tasks-API eingebunden die über das API Gateway und Lambda die UserID Tasks ausliest und auf der HTML ausgibt
 # CSS angepasst für die API ausgabe
+# Seite neue angepasst mit neuer todo2.js Datei
+# Api Dateien angebunden, get und delete funktioniert soweit.
