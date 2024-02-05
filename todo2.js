@@ -92,7 +92,7 @@ async function aufgabeHinzufuegen() {
             Task: taskDescription
         };
 
-        const response = await fetch('https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/put_item', {
+        const response = await fetch('https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/update_item', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
