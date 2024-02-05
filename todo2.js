@@ -80,7 +80,7 @@ async function aufgabeHinzufuegen() {
         // localStorage.setItem('lastTaskId', items.length);
         let userId = document.getElementById('userIdInput').value;
         let taskDescription = document.getElementById('taskInput').value;
-        let lastTodoID = localStorage.getItem('lastTodoID');
+        //let lastTodoID = localStorage.getItem('lastTodoID');
 
         if (taskDescription === '') {
             alert('Bitte eine Task eingeben!');
@@ -93,7 +93,7 @@ async function aufgabeHinzufuegen() {
         };
 
         const response = await fetch('https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/put_item', {
-            method: 'PUT',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
