@@ -13,3 +13,4 @@
 # CSS angepasst für die API ausgabe
 # Seite neue angepasst mit neuer todo2.js Datei
 # Api Dateien angebunden, get und delete funktioniert soweit.
+# Alte sachen rausgenommen zb dogs.js
