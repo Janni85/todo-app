@@ -14,3 +14,5 @@
 # Seite neue angepasst mit neuer todo2.js Datei
 # Api Dateien angebunden, get und delete funktioniert soweit.
 # Alte sachen rausgenommen zb dogs.js
+# h1 hat einen neuen effekt
+# boxen angepasst, bleibt alles mittig wenn das display kleiner wird
