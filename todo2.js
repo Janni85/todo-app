@@ -77,10 +77,8 @@ async function aufgabeLoeschen(userId, todoId) {
 }
 async function aufgabeHinzufuegen() {
     try {
-        // localStorage.setItem('lastTaskId', items.length);
         let userId = document.getElementById('userIdInput').value;
         let taskDescription = document.getElementById('taskInput').value;
-        //let lastTodoID = localStorage.getItem('lastTodoID');
 
         if (taskDescription === '') {
             alert('Bitte eine Task eingeben!');
