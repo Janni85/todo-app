@@ -17,3 +17,6 @@
 # h1 hat einen neuen farbeffekt listenelement li hat jetzt einen leichten schatten
 # boxen angepasst, bleibt alles mittig wenn das display kleiner wird
 # PUT Lambda endlich fertig eingebunden
+# datum uhrzeit stempel wurde hinzugefuegt
+# get lambda wurde angepasst um auch datum aus datenbank auszugeben
+# uhrzeit datum stempel beim hinzufuegen und abrufen der datenbank erfolgreich implementiert

@@ -2,6 +2,7 @@ async function aufgabenLaden() {
     try {
         let userId = document.getElementById('userIdInput').value;
         let todoId = document.getElementById('todoIdInput').value;
+
         if ( userId === '') {
             alert('Bitte eine Aufgabe eingeben!');
             return;
@@ -24,7 +25,7 @@ async function aufgabenLaden() {
         if (data.Tasks && data.Tasks.length > 0) {
             data.Tasks.forEach(task => {
                 const li = document.createElement('li');
-                li.textContent = `TodoID: ${task.TodoID}, Task: ${task.Task}`; // Zeige TodoID und Task an
+                li.textContent = `TodoID: ${task.TodoID}, Datum: ${task.Datum}, Task: ${task.Task}`; // Zeige TodoID und Task an
 
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Löschen';
@@ -80,6 +81,7 @@ async function aufgabeHinzufuegen() {
         let userId = document.getElementById('userIdInput').value;
         let todoId = document.getElementById('todoIdInput').value;
         let taskDescription = document.getElementById('taskInput').value;
+        let timestamp = new Date().toLocaleString();
 
         if (taskDescription === '') {
             alert('Bitte eine Task eingeben!');
@@ -91,7 +93,8 @@ async function aufgabeHinzufuegen() {
         const requestBody = {
             UserID: userId,
             TodoID: todoId,
-            Task: taskDescription
+            Task: taskDescription,
+            Datum: timestamp
         };
 
         const response = await fetch(apiUrl2, {
