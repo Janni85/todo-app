@@ -14,5 +14,6 @@
 # Seite neue angepasst mit neuer todo2.js Datei
 # Api Dateien angebunden, get und delete funktioniert soweit.
 # Alte sachen rausgenommen zb dogs.js
-# h1 hat einen neuen effekt
+# h1 hat einen neuen farbeffekt listenelement li hat jetzt einen leichten schatten
 # boxen angepasst, bleibt alles mittig wenn das display kleiner wird
+# PUT Lambda endlich fertig eingebunden

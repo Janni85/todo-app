@@ -78,6 +78,7 @@ async function aufgabeLoeschen(userId, todoId) {
 async function aufgabeHinzufuegen() {
     try {
         let userId = document.getElementById('userIdInput').value;
+        let todoId = document.getElementById('todoIdInput').value;
         let taskDescription = document.getElementById('taskInput').value;
 
         if (taskDescription === '') {
@@ -85,15 +86,18 @@ async function aufgabeHinzufuegen() {
             return;
         }
 
+        let apiUrl2 = `https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/put_item?UserID=${userId}`;
+
         const requestBody = {
             UserID: userId,
+            TodoID: todoId,
             Task: taskDescription
         };
 
-        const response = await fetch('https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/put_item?UserID=' + userId, {
+        const response = await fetch(apiUrl2, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(requestBody)
         });
