@@ -1,3 +1,19 @@
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('aufgabenLadenButton').addEventListener('click', aufgabenLaden);
+
+    // Korrektur: Entfernen der doppelten IDs und Hinzufügen von Keydown-Event-Listenern
+    const inputs = [document.getElementById('userIdInput'), document.getElementById('todoIdInput')];
+    inputs.forEach(input => {
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                aufgabenLaden();
+            }
+        });
+    });
+
+    document.getElementById('resetButton').addEventListener('click', resetDaten);
+});
+
 async function aufgabenLaden() {
     try {
         let userId = document.getElementById('userIdInput').value;

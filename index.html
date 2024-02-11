@@ -24,10 +24,11 @@
         <br>
         <br><div class="app-container">
         <input type="text" id="userIdInput" placeholder="UserID eingeben">
+        <button onclick="window.location.href='index.html'">Leeren</button>
         <input type="text" id="taskInput" placeholder="Neue Aufgabe eingeben">
         <button onclick="aufgabeHinzufuegen()">Task hinzufügen</button>
         <input type="text" id="todoIdInput" placeholder="TodoID eingeben (optional)">
-        <button onclick="aufgabenLaden()">Aufgaben laden</button>
+        <button id="aufgabenLadenButton" onclick="aufgabenLaden()">Aufgaben laden</button>
         </div>
         <ol id="todoListe"></ol>
         <br>
