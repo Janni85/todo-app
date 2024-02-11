@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    document.getElementById('resetButton').addEventListener('click', resetDaten);
 });
 
 async function aufgabenLaden() {
