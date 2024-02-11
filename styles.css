@@ -122,6 +122,16 @@ span {
     justify-content: center;
 }
 
+.app-container {
+    padding: 20px;
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.226); /* Hintergrundfarbe des Containers */
+    border-radius: 30px; /* Abgerundete Ecken */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leichter Schatten für Tiefe */
+    min-height: 35vh;
+    box-shadow: 0 4px 8px rgba(3, 3, 3, 0.34); /* Leichter Schatten für Tiefe */
+}
+
 @keyframes anim {
     0% {
         box-shadow:

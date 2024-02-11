@@ -20,3 +20,4 @@
 # datum uhrzeit stempel wurde hinzugefuegt
 # get lambda wurde angepasst um auch datum aus datenbank auszugeben
 # uhrzeit datum stempel beim hinzufuegen und abrufen der datenbank erfolgreich implementiert
+# neuer app-conntainer in css hinzugefügt
