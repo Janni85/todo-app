@@ -57,6 +57,7 @@ async function aufgabenLaden() {
         console.error('Fehler beim Laden der Aufgaben:', error);
     }
 }
+
 async function aufgabeLoeschen(userId, todoId) {
     try {
         console.log('Aufgabe wird gelöscht:', todoId);
@@ -90,6 +91,7 @@ async function aufgabeLoeschen(userId, todoId) {
         throw error;
     }
 }
+
 async function aufgabeHinzufuegen() {
     try {
         let userId = document.getElementById('userIdInput').value;
