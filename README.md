@@ -22,3 +22,4 @@
 # uhrzeit datum stempel beim hinzufuegen und abrufen der datenbank erfolgreich implementiert
 # neuer app-conntainer in css hinzugefügt
 # enter funktion für die eingabe hinzugefügt
+# leichtes leuchten bei h1 und button hinzugefügt
