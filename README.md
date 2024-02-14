@@ -26,3 +26,4 @@
 # neue funktion erstellt, wenn todoid nicht angegeben ist dann sucht er sich die höchste todoid und erhöht sie um +1.
 # funktion der todoid so überarbeitet das er die nächstmögliche freie todoid raussucht und setzt, anstatt die höchste todoid um +1 zu erhöhen.
 # die todoid wird nun richtig wie ein int sortiert und nicht wie ein string. dh der 10. todoid eintrag kommt nun nach der 9 statt nach der 1.
+# mit enter im eingabefeld für userid und todoid, werden die tasks geladen und bei taskinput wird der eintrag hinzugefügt, eingabefelder werden gelöscht.

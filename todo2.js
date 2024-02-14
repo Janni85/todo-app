@@ -1,15 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('aufgabenLadenButton').addEventListener('click', aufgabenLaden);
+    const userIdInput = document.getElementById('userIdInput');
+    const todoIdInput = document.getElementById('todoIdInput');
+    const taskInput = document.getElementById('taskInput');
+    
+    const aufgabenLadenButton = document.getElementById('aufgabenLadenButton');
 
-    // Korrektur: Entfernen der doppelten IDs und Hinzufügen von Keydown-Event-Listenern
-    const inputs = [document.getElementById('userIdInput'), document.getElementById('todoIdInput')];
-    inputs.forEach(input => {
-        input.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                aufgabenLaden();
-            }
-        });
+    // Event-Listener für Enter-Taste in userIdInput
+    userIdInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            aufgabenLaden();
+        }
     });
+
+    // Event-Listener für Enter-Taste in todoIdInput
+    todoIdInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            aufgabenLaden();
+        }
+    });
+
+    // Event-Listener für Enter-Taste in taskInput
+    taskInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            aufgabeHinzufuegen();
+        }
+    });
+
+    // Event-Listener für den Button
+    aufgabenLadenButton.addEventListener('click', aufgabenLaden);
 });
 
 async function aufgabenLaden() {
@@ -124,6 +142,7 @@ async function aufgabeHinzufuegen() {
     try {
         let userId = document.getElementById('userIdInput').value;
         let todoIdInput = document.getElementById('todoIdInput');
+        let taskInput = document.getElementById('taskInput');
         let todoId = todoIdInput.value;
         let taskDescription = document.getElementById('taskInput').value;
         let timestamp = new Date().toLocaleString();
@@ -160,6 +179,7 @@ async function aufgabeHinzufuegen() {
         const data = await response.json();
         console.log('Added record:', data);
         todoIdInput.value = '';
+        taskInput.value = '';
         aufgabenLaden(); // Aktualisiert die Anzeige der Aufgabenliste
 
     } catch (error) {
