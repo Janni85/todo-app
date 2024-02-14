@@ -23,4 +23,4 @@
 # neuer app-conntainer in css hinzugefügt
 # enter funktion für die eingabe hinzugefügt
 # leichtes leuchten bei h1 und button hinzugefügt
-# neue funktion erstellt, wenn todoid nicht angegeben ist dann sucht er sich die höchste todoid und macht sie +1
+# neue funktion erstellt, wenn todoid nicht angegeben ist dann sucht er sich die höchste todoid und erhöht sie um +1
