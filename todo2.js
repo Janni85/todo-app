@@ -37,9 +37,12 @@ async function aufgabenLaden() {
         aufgabenListe.innerHTML = ''; // Leert die aktuelle Liste, um sie neu zu befüllen
 
         if (data.Tasks && data.Tasks.length > 0) {
+            // Sortiere die Aufgaben nach TodoID als Zahlen
+            data.Tasks.sort((a, b) => parseInt(a.TodoID, 10) - parseInt(b.TodoID, 10));
+
             data.Tasks.forEach(task => {
                 const li = document.createElement('li');
-                li.textContent = `To-Do-ID: ${task.TodoID} | Datum: ${task.Datum} | Task: ${task.Task}`; // Zeige TodoID und Task an
+                li.textContent = `To-Do-ID: ${task.TodoID} | Datum: ${task.Datum} | Task: ${task.Task}`;
 
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Löschen';
@@ -101,6 +104,8 @@ async function findeNaechsteFreieTodoID(userId) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
+
+        // Ändere die Vergleichs- und Sortierlogik, um TodoIDs als Zahlen zu behandeln
         let existingIds = data.Tasks.map(task => parseInt(task.TodoID, 10));
         let nextFreeId = 1;
 
