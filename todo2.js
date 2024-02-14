@@ -105,58 +105,15 @@ async function findeNaechsteFreieTodoID() {
         const data = await response.json();
         let maxId = 0;
         data.Tasks.forEach(task => {
-            if (task.TodoID > maxId) maxId = task.TodoID;
+            const currentId = parseInt(task.TodoID, 10); // Umwandlung in eine Zahl mit Basis 10
+            if (currentId > maxId) maxId = currentId;
         });
-        return maxId += ".1"; // Fügt der höchsten TodoID eine .1 hinzu
+        return maxId + 1; // Gibt die nächste freie TodoID als Zahl zurück
     } catch (error) {
         console.error('Fehler beim Ermitteln der nächsten freien TodoID:', error);
         throw error;
     }
 }
-
-// async function aufgabeHinzufuegen() {
-//     try {
-//         let userId = document.getElementById('userIdInput').value;
-//         let todoId = document.getElementById('todoIdInput').value;
-//         let taskDescription = document.getElementById('taskInput').value;
-//         let timestamp = new Date().toLocaleString();
-
-//         if (taskDescription === '') {
-//             alert('Bitte eine Task eingeben!');
-//             return;
-//         }
-
-//         let apiUrl2 = `https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/put_item?UserID=${userId}`;
-
-//         const requestBody = {
-//             UserID: userId,
-//             TodoID: todoId,
-//             Task: taskDescription,
-//             Datum: timestamp
-//         };
-
-//         const response = await fetch(apiUrl2, {
-//             method: 'PUT',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify(requestBody)
-//         });
-
-//         console.log(response)
-//         if (!response.ok) {
-//             throw new Error(`HTTP error! status: ${response.status}`);//Response.
-//         }
-//         const data = await response.json();
-//         console.log('Added record:', data);
-//         aufgabenLaden();
-
-//         return data;
-//     } catch (error) {
-//         console.error('Error adding record:', error.message);
-//         throw error;
-//     }
-// }
 
 async function aufgabeHinzufuegen() {
     try {
@@ -171,14 +128,14 @@ async function aufgabeHinzufuegen() {
         }
 
         if (!todoId) {
-            todoId = await findeNaechsteFreieTodoID(); // Ermittelt die höchste TodoID, falls keine angegeben wurde, und fügt eine .1 hinzu
+            todoId = await findeNaechsteFreieTodoID();
         }
 
         let apiUrl2 = `https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/put_item?UserID=${userId}&TodoID=${todoId}`;
 
         const requestBody = {
             UserID: userId,
-            TodoID: todoId,
+            TodoID: '' + todoId,
             Task: taskDescription,
             Datum: timestamp
         };
