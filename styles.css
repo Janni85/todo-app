@@ -23,7 +23,8 @@ body {
 h1 {
     color: white;
     font-size: 2em;
-    padding-top: 50px;
+    padding-top: 60px;
+    padding-bottom: 70px;
     animation: stromschwankungFlackern 2s infinite;
     text-shadow:
     0 0 5px #002d4f,
@@ -86,6 +87,7 @@ input {
     box-sizing: border-box;
     border: none;
     border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.251);
 }
 
 .timestamp {
@@ -125,6 +127,8 @@ span {
     justify-content: center;
     align-items: center;
     gap: 80px;
+    padding-top: 10px;
+    padding-bottom: 40px;
 }
 
 #result-container {
@@ -141,7 +145,6 @@ span {
     margin: 20px 10px 40px;
     background-color: rgba(0, 180, 250, 0.18); /* Hintergrundfarbe des Containers */
     border-radius: 200px; /* Abgerundete Ecken */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leichter Schatten für Tiefe */
     min-height: 35vh;
     box-shadow: 0 8px 8px rgba(3, 3, 3, 0.34); /* Leichter Schatten für Tiefe */
 }
