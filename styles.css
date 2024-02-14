@@ -48,13 +48,13 @@ button:hover {
 
 li {
     background-color: #333333;
-    padding-left: 20px;
+    padding-left: 40px;
     margin: 10px;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.251);
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.251);
 }
 
 button {
@@ -73,7 +73,7 @@ button {
     0 0 20px #002d4f,
     0 0 40px #002d4f,
     0 0 60px #0074cc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.251);
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.251);
 }
 
 li:hover {
@@ -87,7 +87,7 @@ input {
     box-sizing: border-box;
     border: none;
     border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.251);
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.251);
 }
 
 .timestamp {
@@ -144,9 +144,10 @@ span {
 .app-container {
     margin: 20px 10px 40px;
     background-color: rgba(0, 180, 250, 0.18); /* Hintergrundfarbe des Containers */
-    border-radius: 200px; /* Abgerundete Ecken */
+    border-radius: 200px 280px 20px 20px; /* Abgerundete Ecken */
     min-height: 35vh;
     box-shadow: 0 8px 8px rgba(3, 3, 3, 0.34); /* Leichter Schatten für Tiefe */
+    padding: 20px 20px;
 }
 
 @keyframes anim {
