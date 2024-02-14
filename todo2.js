@@ -39,7 +39,7 @@ async function aufgabenLaden() {
         if (data.Tasks && data.Tasks.length > 0) {
             data.Tasks.forEach(task => {
                 const li = document.createElement('li');
-                li.textContent = `TodoID: ${task.TodoID} | Datum: ${task.Datum} | Task: ${task.Task}`; // Zeige TodoID und Task an
+                li.textContent = `To-Do-ID: ${task.TodoID} | Datum: ${task.Datum} | Task: ${task.Task}`; // Zeige TodoID und Task an
 
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Löschen';
@@ -92,23 +92,23 @@ async function aufgabeLoeschen(userId, todoId) {
     }
 }
 
-async function findeNaechsteFreieTodoID() {
-    let userId = document.getElementById('userIdInput').value;
-
-    let apiUrl = `https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/get_item?UserID=${userId}`;
-
+async function findeNaechsteFreieTodoID(userId) {
     try {
+        let apiUrl = `https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/get_item?UserID=${userId}`;
+
         const response = await fetch(apiUrl);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        let maxId = 0;
-        data.Tasks.forEach(task => {
-            const currentId = parseInt(task.TodoID, 10); // Umwandlung in eine Zahl mit Basis 10
-            if (currentId > maxId) maxId = currentId;
-        });
-        return maxId + 1; // Gibt die nächste freie TodoID als Zahl zurück
+        let existingIds = data.Tasks.map(task => parseInt(task.TodoID, 10));
+        let nextFreeId = 1;
+
+        while (existingIds.includes(nextFreeId)) {
+            nextFreeId++;
+        }
+
+        return nextFreeId;
     } catch (error) {
         console.error('Fehler beim Ermitteln der nächsten freien TodoID:', error);
         throw error;
@@ -118,7 +118,8 @@ async function findeNaechsteFreieTodoID() {
 async function aufgabeHinzufuegen() {
     try {
         let userId = document.getElementById('userIdInput').value;
-        let todoId = document.getElementById('todoIdInput').value;
+        let todoIdInput = document.getElementById('todoIdInput');
+        let todoId = todoIdInput.value;
         let taskDescription = document.getElementById('taskInput').value;
         let timestamp = new Date().toLocaleString();
 
@@ -128,7 +129,7 @@ async function aufgabeHinzufuegen() {
         }
 
         if (!todoId) {
-            todoId = await findeNaechsteFreieTodoID();
+            todoId = await findeNaechsteFreieTodoID(userId);
         }
 
         let apiUrl2 = `https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/put_item?UserID=${userId}&TodoID=${todoId}`;
@@ -153,6 +154,7 @@ async function aufgabeHinzufuegen() {
         }
         const data = await response.json();
         console.log('Added record:', data);
+        todoIdInput.value = '';
         aufgabenLaden(); // Aktualisiert die Anzeige der Aufgabenliste
 
     } catch (error) {

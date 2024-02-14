@@ -24,3 +24,4 @@
 # enter funktion für die eingabe hinzugefügt
 # leichtes leuchten bei h1 und button hinzugefügt
 # neue funktion erstellt, wenn todoid nicht angegeben ist dann sucht er sich die höchste todoid und erhöht sie um +1
+# funktion der todoid so überarbietet das er die nächstmögliche freie todoid raussucht und setzt, anstatt die höchste todoid um +1 zu erhöhen
