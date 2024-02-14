@@ -171,7 +171,7 @@ async function aufgabeHinzufuegen() {
         }
 
         if (!todoId) {
-            todoId = await findeNaechsteFreieTodoID(); // Ermittelt die nächste freie TodoID, falls keine angegeben wurde
+            todoId = await findeNaechsteFreieTodoID(); // Ermittelt die höchste TodoID, falls keine angegeben wurde, und fügt eine .1 hinzu
         }
 
         let apiUrl2 = `https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/put_item?UserID=${userId}&TodoID=${todoId}`;
