@@ -72,6 +72,7 @@ button {
     0 0 20px #002d4f,
     0 0 40px #002d4f,
     0 0 60px #0074cc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.251);
 }
 
 li:hover {
