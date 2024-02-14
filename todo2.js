@@ -39,7 +39,7 @@ async function aufgabenLaden() {
         if (data.Tasks && data.Tasks.length > 0) {
             data.Tasks.forEach(task => {
                 const li = document.createElement('li');
-                li.textContent = `TodoID: ${task.TodoID}, Datum: ${task.Datum}, Task: ${task.Task}`; // Zeige TodoID und Task an
+                li.textContent = `TodoID: ${task.TodoID} | Datum: ${task.Datum} | Task: ${task.Task}`; // Zeige TodoID und Task an
 
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Löschen';
@@ -92,6 +92,72 @@ async function aufgabeLoeschen(userId, todoId) {
     }
 }
 
+async function findeNaechsteFreieTodoID() {
+    let userId = document.getElementById('userIdInput').value;
+
+    let apiUrl = `https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/get_item?UserID=${userId}`;
+
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        let maxId = 0;
+        data.Tasks.forEach(task => {
+            if (task.TodoID > maxId) maxId = task.TodoID;
+        });
+        return maxId += ".1"; // Fügt der höchsten TodoID eine .1 hinzu
+    } catch (error) {
+        console.error('Fehler beim Ermitteln der nächsten freien TodoID:', error);
+        throw error;
+    }
+}
+
+// async function aufgabeHinzufuegen() {
+//     try {
+//         let userId = document.getElementById('userIdInput').value;
+//         let todoId = document.getElementById('todoIdInput').value;
+//         let taskDescription = document.getElementById('taskInput').value;
+//         let timestamp = new Date().toLocaleString();
+
+//         if (taskDescription === '') {
+//             alert('Bitte eine Task eingeben!');
+//             return;
+//         }
+
+//         let apiUrl2 = `https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/put_item?UserID=${userId}`;
+
+//         const requestBody = {
+//             UserID: userId,
+//             TodoID: todoId,
+//             Task: taskDescription,
+//             Datum: timestamp
+//         };
+
+//         const response = await fetch(apiUrl2, {
+//             method: 'PUT',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify(requestBody)
+//         });
+
+//         console.log(response)
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! status: ${response.status}`);//Response.
+//         }
+//         const data = await response.json();
+//         console.log('Added record:', data);
+//         aufgabenLaden();
+
+//         return data;
+//     } catch (error) {
+//         console.error('Error adding record:', error.message);
+//         throw error;
+//     }
+// }
+
 async function aufgabeHinzufuegen() {
     try {
         let userId = document.getElementById('userIdInput').value;
@@ -104,7 +170,11 @@ async function aufgabeHinzufuegen() {
             return;
         }
 
-        let apiUrl2 = `https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/put_item?UserID=${userId}`;
+        if (!todoId) {
+            todoId = await findeNaechsteFreieTodoID(); // Ermittelt die nächste freie TodoID, falls keine angegeben wurde
+        }
+
+        let apiUrl2 = `https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/put_item?UserID=${userId}&TodoID=${todoId}`;
 
         const requestBody = {
             UserID: userId,
@@ -116,20 +186,18 @@ async function aufgabeHinzufuegen() {
         const response = await fetch(apiUrl2, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(requestBody)
         });
 
-        console.log(response)
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);//Response.
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
         console.log('Added record:', data);
-        aufgabenLaden();
+        aufgabenLaden(); // Aktualisiert die Anzeige der Aufgabenliste
 
-        return data;
     } catch (error) {
         console.error('Error adding record:', error.message);
         throw error;
