@@ -60,15 +60,22 @@ async function aufgabenLaden() {
 
             data.Tasks.forEach(task => {
                 const li = document.createElement('li');
-                li.textContent = `To-Do-ID: ${task.TodoID} | Datum: ${task.Datum} | Task: ${task.Task}`;
-
+            
+                const timestampSpan = document.createElement('span');
+                timestampSpan.className = 'timestamp';
+                timestampSpan.textContent = task.Datum;
+            
+                li.innerHTML += `To-Do-ID: ${task.TodoID} | Task: ${task.Task}`;
+                
+                li.appendChild(timestampSpan);
+            
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Löschen';
                 deleteButton.onclick = function() {
                     aufgabeLoeschen(userId, task.TodoID);
                 };
                 li.appendChild(deleteButton);
-
+            
                 aufgabenListe.appendChild(li);
             });
         } else {

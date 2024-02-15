@@ -91,14 +91,8 @@ input {
 }
 
 .timestamp {
-    margin-left: 40px;
-    padding-right: 40px;
-    padding-left: 40px;
-    align-items: center;
-}
-
-.timestamp, button {
-    margin-left: 20px;
+    margin-left: auto;  /* Änderung hier: Verschiebt den Timestamp ganz nach rechts */
+    padding-right: 80px; /* Anpassung für den Abstand zum Rand */
 }
 
 .aufgabe {
