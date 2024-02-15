@@ -53,7 +53,7 @@ h1:hover {
 button:hover {
     background-color: #009be8;
     color: #fff;
-    transform: scale(1.1);
+    transform: scale(1.03);
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.50);
 }
 
@@ -66,6 +66,7 @@ li {
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.251);
+    transition: transform 0.4s ease, background-color 0.4s ease;
 }
 
 button {
@@ -85,11 +86,12 @@ button {
     0 0 40px #002d4f,
     0 0 60px #0074cc;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s ease, background-color 0.4s ease;
 }
 
 li:hover {
     color: #009be8;
-    scale: 1.02;
+    transform: scale(1.02);
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.50);
 }
 
