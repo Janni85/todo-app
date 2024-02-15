@@ -78,6 +78,8 @@ button {
 
 li:hover {
     color: #009be8;
+    scale: 1.02;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.548);
 }
 
 input {
