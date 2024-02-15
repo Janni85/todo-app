@@ -92,7 +92,8 @@ input {
 
 .timestamp {
     margin-left: auto;  /* Änderung hier: Verschiebt den Timestamp ganz nach rechts */
-    padding-right: 80px; /* Anpassung für den Abstand zum Rand */
+    padding-right: 50px; /* Anpassung für den Abstand zum Rand */
+    padding-left: 50px;
 }
 
 .aufgabe {

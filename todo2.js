@@ -65,7 +65,7 @@ async function aufgabenLaden() {
                 timestampSpan.className = 'timestamp';
                 timestampSpan.textContent = task.Datum;
             
-                li.innerHTML += `To-Do-ID: ${task.TodoID} | Task: ${task.Task}`;
+                li.innerHTML += `To-Do-ID: ${task.TodoID} | ${task.Task}`;
                 
                 li.appendChild(timestampSpan);
             
