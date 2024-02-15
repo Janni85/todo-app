@@ -27,6 +27,7 @@ h1 {
     padding-bottom: 70px;
     animation: stromschwankungFlackern 2s infinite;
     text-shadow:
+    0 8px 8px rgba(0, 0, 0, 0.25),
     0 0 5px #002d4f,
     0 0 15px #002d4f,
     0 0 20px #002d4f,
@@ -38,12 +39,22 @@ h1 {
 
 h1:hover {
     color: #009be8;
+    text-shadow:
+    0 8px 8px rgba(0, 0, 0, 0.50),
+    0 0 5px #002d4f,
+    0 0 15px #002d4f,
+    0 0 20px #002d4f,
+    0 0 40px #002d4f,
+    0 0 60px #0074cc,
+    0 0 10px #009be8,
+    0 0 98px #0074cc;
 }
 
 button:hover {
     background-color: #009be8;
     color: #fff;
     transform: scale(1.1);
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.50);
 }
 
 li {
@@ -73,13 +84,13 @@ button {
     0 0 20px #002d4f,
     0 0 40px #002d4f,
     0 0 60px #0074cc;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.251);
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
 }
 
 li:hover {
     color: #009be8;
     scale: 1.02;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.548);
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.50);
 }
 
 input {
