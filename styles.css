@@ -154,7 +154,7 @@ span {
 .app-container {
     margin: 20px 10px 40px;
     background-color: rgba(0, 180, 250, 0.18); /* Hintergrundfarbe des Containers */
-    border-radius: 200px 280px 20px 20px; /* Abgerundete Ecken */
+    border-radius: 180px 180px 20px 20px; /* Abgerundete Ecken */
     min-height: 35vh;
     box-shadow: 0 8px 8px rgba(3, 3, 3, 0.34); /* Leichter Schatten für Tiefe */
     padding: 20px 20px;
