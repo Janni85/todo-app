@@ -1,20 +1,14 @@
-/* Grundlegendes Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 :root {
     --bg: #002d4f;
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     font-family: Arial, sans-serif;
     padding: 20px; 
     text-align: center;
     color: white;
-    height: 100vh;
     margin: 0;
     background: var(--bg);
     place-items: center;
@@ -50,13 +44,6 @@ h1:hover {
     0 0 98px #0074cc;
 }
 
-button:hover {
-    background-color: #009be8;
-    color: #fff;
-    transform: scale(1.03);
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.50);
-}
-
 li {
     background-color: #333333;
     padding-left: 40px;
@@ -69,16 +56,22 @@ li {
     transition: transform 0.4s ease, background-color 0.4s ease;
 }
 
+li:hover {
+    color: #009be8;
+    transform: scale(1.02);
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.50);
+}
+
 button {
     background-color: #0074cc;
     color: white;
     padding: 10px 20px;
     margin: 2px 0;
-    border: none;
     border-radius: 50px;
     cursor: pointer;
     font-size: 1em;
     align-content: center;
+    justify-content: space-around;
     text-shadow:
     0 0 5px #002d4f,
     0 0 15px #002d4f,
@@ -89,9 +82,10 @@ button {
     transition: transform 0.4s ease, background-color 0.4s ease;
 }
 
-li:hover {
-    color: #009be8;
-    transform: scale(1.02);
+button:hover {
+    background-color: #009be8;
+    color: #fff;
+    transform: scale(1.04);
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.50);
 }
 
@@ -106,18 +100,9 @@ input {
 }
 
 .timestamp {
-    margin-left: auto;  /* Änderung hier: Verschiebt den Timestamp ganz nach rechts */
-    padding-right: 50px; /* Anpassung für den Abstand zum Rand */
+    margin-left: auto;
+    padding-right: 50px;
     padding-left: 50px;
-}
-
-.aufgabe {
-    padding-right: 20px;
-    padding-left: 20px;
-    text-align: left;
-    word-wrap: break-word;
-    margin-right: 40px;
-    flex-grow: 1;
 }
 
 span {
@@ -134,30 +119,18 @@ span {
 
 .container {
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 80px;
     padding-top: 30px;
     padding-bottom: 40px;
 }
 
-#result-container {
-    background-color: #333333;
-    padding-left: 20px;
-    margin: 10px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .app-container {
-    margin: 20px 10px 40px;
-    background-color: rgba(0, 180, 250, 0.18); /* Hintergrundfarbe des Containers */
-    border-radius: 180px 180px 20px 20px; /* Abgerundete Ecken */
-    min-height: 35vh;
-    box-shadow: 0 8px 8px rgba(3, 3, 3, 0.34); /* Leichter Schatten für Tiefe */
-    padding: 20px 20px;
+    margin: 20px 40px 20px 40px;
+    background-color: rgba(0, 180, 250, 0.18);
+    border-radius: 180px 180px 20px 20px;
+    box-shadow: 0 8px 10px rgba(3, 3, 3, 0.50);
+    padding: 20px 40px 20px 20px;
+    transition: transform 0.4s ease, background-color 0.4s ease;
 }
 
 @keyframes anim {
@@ -167,14 +140,12 @@ span {
           0 0 0px 0px var(--bg),
           0 0 0px 0px #1affb300;
     }
-
     10% {
         box-shadow:
           0 0 8px 6px var(--c2),
           0 0 12px 10px var(--bg),
           0 0 12px 14px var(--c2);
     }
-
     100% {
         box-shadow:
           0 0 8px 6px #1affb300,
