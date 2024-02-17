@@ -82,13 +82,13 @@ async function aufgabenLaden() {
             alert('Es wurden keine Aufgaben gefunden.');
         }
     } catch (error) {
-        console.error('Fehler beim Laden der Aufgaben:', error);
+        console.error('Fehler beim laden der Aufgaben:', error);
     }
 }
 
 async function aufgabeLoeschen(userId, todoId) {
     try {
-        console.log('Aufgabe wird gelöscht:', todoId);
+        console.log('Aufgabe wird geloescht:', todoId);
 
         const endpoint = 'https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/del_item';
 
@@ -110,12 +110,12 @@ async function aufgabeLoeschen(userId, todoId) {
         }
 
         const data = await response.json();
-        console.log('Deleted record:', data);
+        console.log('Aufgabe gelöscht:', data);
         aufgabenLaden();
 
         return data;
     } catch (error) {
-        console.error('Error deleting records:', error.message);
+        console.error('Fehler beim loeschen der Aufgaben:', error.message);
         throw error;
     }
 }
@@ -140,7 +140,7 @@ async function findeNaechsteFreieTodoID(userId) {
 
         return nextFreeId;
     } catch (error) {
-        console.error('Fehler beim Ermitteln der nächsten freien TodoID:', error);
+        console.error('Fehler beim Ermitteln der naechsten freien To-Do-ID:', error);
         throw error;
     }
 }
@@ -184,13 +184,13 @@ async function aufgabeHinzufuegen() {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        console.log('Added record:', data);
+        console.log('Aufgabe hinzugefuegt', data);
         todoIdInput.value = '';
         taskInput.value = '';
         aufgabenLaden(); // Aktualisiert die Anzeige der Aufgabenliste
 
     } catch (error) {
-        console.error('Error adding record:', error.message);
+        console.error('Fehler beim hinzufuegen der Aufgaben:', error.message);
         throw error;
     }
 }
