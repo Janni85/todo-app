@@ -89,16 +89,6 @@ button:hover {
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.50);
 }
 
-.app-container > input {
-    padding: 10px;
-    margin: 40px 0;
-    width: 50%;
-    box-sizing: border-box;
-    border: none;
-    border-radius: 20px;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
-}
-
 .timestamp {
     margin-left: auto;
     padding-right: 50px;
@@ -131,6 +121,16 @@ span {
     box-shadow: 0 8px 8px rgba(3, 3, 3, 0.50);
     padding: 20px 40px 20px 20px;
     transition: transform 0.4s ease, background-color 0.4s ease;
+}
+
+.app-container > input {
+    padding: 10px;
+    margin: 40px 0;
+    width: 50%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes anim {
