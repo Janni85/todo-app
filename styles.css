@@ -89,7 +89,7 @@ button:hover {
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.50);
 }
 
-input {
+.app-container > input {
     padding: 10px;
     margin: 40px 0;
     width: 50%;
