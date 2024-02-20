@@ -51,7 +51,7 @@ li {
     border-radius: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    text-align: start;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
     transition: transform 0.4s ease, background-color 0.4s ease;
 }
@@ -90,9 +90,11 @@ button:hover {
 }
 
 .timestamp {
+    margin: 0 40px;
+}
+
+.checkbox {
     margin-left: auto;
-    padding-right: 50px;
-    padding-left: 50px;
 }
 
 span {

@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const userIdInput = document.getElementById('userIdInput');
     const todoIdInput = document.getElementById('todoIdInput');
     const taskInput = document.getElementById('taskInput');
-    
     const aufgabenLadenButton = document.getElementById('aufgabenLadenButton');
 
     // Event-Listener für Enter-Taste in userIdInput
@@ -32,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function aufgabenLaden() {
     try {
-        let userId = document.getElementById('userIdInput').value;
-        let todoId = document.getElementById('todoIdInput').value;
+        let userId = userIdInput.value;
+        let todoId = todoIdInput.value;
 
         if ( userId === '') {
             alert('Bitte eine Aufgabe eingeben!');
@@ -64,16 +63,25 @@ async function aufgabenLaden() {
                 const timestampSpan = document.createElement('span');
                 timestampSpan.className = 'timestamp';
                 timestampSpan.textContent = task.Datum;
-            
-                li.innerHTML += `To-Do-ID: ${task.TodoID} | ${task.Task}`;
-                
-                li.appendChild(timestampSpan);
-            
+
+                const checkboxInput = document.createElement('input');
+                checkboxInput.type = 'checkbox';
+                checkboxInput.className = 'checkbox';
+                checkboxInput.defaultChecked = task.Completed === 'yes';
+                checkboxInput.onclick = function() {
+                    onCheckboxChange(userId, task.TodoID, checkboxInput.checked);
+                };
+
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Löschen';
                 deleteButton.onclick = function() {
                     aufgabeLoeschen(userId, task.TodoID);
                 };
+                
+                li.innerHTML += `To-Do-ID: ${task.TodoID} | ${task.Task}`;
+                
+                li.appendChild(checkboxInput);
+                li.appendChild(timestampSpan);
                 li.appendChild(deleteButton);
             
                 aufgabenListe.appendChild(li);
@@ -83,6 +91,58 @@ async function aufgabenLaden() {
         }
     } catch (error) {
         console.error('Fehler beim laden der Aufgaben:', error);
+    }
+}
+
+async function fetchExistingData(userId, todoId) {
+    try {
+        const apiUrl = `https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/get_item?UserID=${userId}&TodoID=${todoId}`;
+
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data.Tasks[0];  // Gehe davon aus, dass nur ein Eintrag für die TodoID existiert
+    } catch (error) {
+        console.error('Fehler beim Abrufen der vorhandenen Daten:', error.message);
+        throw error;
+    }
+}
+
+async function onCheckboxChange(userId, todoId, isChecked) {
+    try {
+        const existingData = await fetchExistingData(userId, todoId);
+
+        const apiUrl = `https://55pxbbcbr7.execute-api.eu-central-1.amazonaws.com/default/put_item?UserID=${userId}&TodoID=${todoId}`;
+
+        // Daten für den PUT-Request vorbereiten
+        const requestBody = {
+            UserID: userId,
+            TodoID: todoId,
+            Task: existingData ? existingData.Task : '',  // Behalte den bestehenden Task bei oder setze auf leer
+            Datum: existingData ? existingData.Datum : '',  // Behalte das bestehende Datum bei oder setze auf leer
+            Completed: existingData && existingData.Completed === 'yes' ? 'no' : 'yes'
+        };
+
+        const response = await fetch(apiUrl, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestBody)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        // Aktualisiere die Anzeige der Aufgabenliste
+        aufgabenLaden();
+    } catch (error) {
+        console.error('Fehler beim Ändern des Aufgabenstatus:', error.message);
+        throw error;
     }
 }
 
@@ -169,7 +229,8 @@ async function aufgabeHinzufuegen() {
             UserID: userId,
             TodoID: '' + todoId,
             Task: taskDescription,
-            Datum: timestamp
+            Datum: timestamp,
+            Completed: 'no' // Setze den Completed-Wert auf 'no' für eine neue Aufgabe
         };
 
         const response = await fetch(apiUrl2, {
@@ -183,6 +244,7 @@ async function aufgabeHinzufuegen() {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
+
         const data = await response.json();
         console.log('Aufgabe hinzugefuegt', data);
         todoIdInput.value = '';
@@ -190,7 +252,7 @@ async function aufgabeHinzufuegen() {
         aufgabenLaden(); // Aktualisiert die Anzeige der Aufgabenliste
 
     } catch (error) {
-        console.error('Fehler beim hinzufuegen der Aufgaben:', error.message);
+        console.error('Fehler beim Hinzufügen der Aufgaben:', error.message);
         throw error;
     }
 }
