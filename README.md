@@ -28,5 +28,6 @@
 # die todoid wird nun richtig wie ein int sortiert und nicht wie ein string. dh der 10. todoid eintrag kommt nun nach der 9 statt nach der 1.
 # mit enter im eingabefeld für userid und todoid, werden die tasks geladen und bei taskinput wird der eintrag hinzugefügt, eingabefelder werden gelöscht.
 # li wird beim hovern größer mit stärkerem schatten zum hervorheben.
-# css aufgeräumt und angepasst.1
+# css aufgeräumt und angepasst.
+# lambdas hinzugefügt: get del put.
 # checkbox neu hinzugefügt, überschreibt den "completed" eintrag in der datenbank, restlicher eintrag wird nicht verändert.
