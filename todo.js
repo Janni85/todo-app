@@ -111,7 +111,7 @@ async function fetchExistingData(userId, todoId) {
     }
 }
 
-async function onCheckboxChange(userId, todoId, isChecked) {
+async function onCheckboxChange(userId, todoId) {
     try {
         const existingData = await fetchExistingData(userId, todoId);
 
